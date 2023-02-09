@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    
+    <script>
+    // Rock Paper Scissors
+
+    let choiceComputer;
+    let choicePlayer;
+
+    function rockPaperScissors() {
+        getComputerChoice();
+        getPlayerChoice();
+        determineWinner(choiceComputer, choicePlayer);
+    }
+
+        // Get computer choice function
+    function getComputerChoice() {
+
+        //  randomly choose value 1, 2, 3
+        choiceComputer = Math.floor(Math.random() * 3) + 1;
+
+        //  converts to 1, 2, 3 
+        if (choiceComputer == 1) {
+            choiceComputer = "rock";
+        } else if (choiceComputer == 2) {
+            choiceComputer = "scissors";
+        } else {
+            choiceComputer = "paper";
+        }
+    
+        //  returns choice
+        console.log(choiceComputer);
+        return choiceComputer;
+    }
+    
+    // Get Player choice
+    function getPlayerChoice() {
+
+        //  prompt to get choice
+        let choicePlayer = prompt("Rock, Paper, or Scissors?");
+    
+        //  change choice to lower case
+        choicePlayer = choicePlayer.toLowerCase();
+
+        //  return choice
+        console.log(choicePlayer);
+        return choicePlayer;
+    }
+
+    // Check who wins - takes two values
+    function determineWinner (choiceComputer, choicePlayer) {
+        console.log("Here");
+        let roundWinner;
+        // switch cases
+        switch (choiceComputer, choicePlayer) {
+
+            // case one playerChoice === compChoice
+            case choiceComputer === choicePlayer:
+                console.log("It is a tie!");
+                break;
+
+            case choiceComputer === "paper" && choicePlayer === "rock":
+                console.log("Computer wins!");
+                break;
+            // cases 2 - 6 each possibility
+        }
+    }
+    rockPaperScissors();
+
+    </script>
+</body>
+</html>
