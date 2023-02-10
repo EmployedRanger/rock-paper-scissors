@@ -15,7 +15,7 @@
     let choicePlayer;
     let playerScore = 0;
     let computerScore = 0;
-    let rounds = 1;
+    const MAX_ROUNDS = 5;
 
     function playRound() {
         choiceComputer = getComputerChoice();
@@ -75,9 +75,7 @@
             roundWinner = 0;
         } else if (choiceComputer == "scissors" && choicePlayer == "rock") {
             roundWinner = 1;
-        } else {
-            roundWinner = 10;
-        }
+        } else {}
 
         return roundWinner;
     }
@@ -111,15 +109,9 @@
     }
 
     function game (computerScore, playerScore) {
-        while (playerScore < rounds && computerScore < rounds) {
+        while (playerScore < MAX_ROUNDS && computerScore < MAX_ROUNDS) {
             let roundWinner;
-            if (playerScore >= rounds) {
-                console.log("Congrats! You win the game!");
-                return;
-            } else if (computerScore >= rounds) {
-                console.log("Computer won this game!");
-                return;
-            }
+
             // Plays round and records score
             playRound();
             if (roundWinner == 0) {
@@ -128,10 +120,14 @@
                 ++playerScore;
             } else {
             }
-
-
         }
-
+        if (playerScore >= MAX_ROUNDS) {
+            console.log("Congrats! You win the game!");
+            return;
+        } else if (computerScore >= MAX_ROUNDS) {
+            console.log("Computer won this game!");
+            return;
+            }
     }
 
     game(computerScore, playerScore);
