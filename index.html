@@ -15,8 +15,8 @@
     let choicePlayer;
 
     function rockPaperScissors() {
-        getComputerChoice();
-        getPlayerChoice();
+        choiceComputer = getComputerChoice();
+        choicePlayer = getPlayerChoice();
         determineWinner(choiceComputer, choicePlayer);
     }
 
@@ -46,30 +46,42 @@
         //  prompt to get choice
         let choicePlayer = prompt("Rock, Paper, or Scissors?");
     
-        //  change choice to lower case
-        choicePlayer = choicePlayer.toLowerCase();
-
-        //  return choice
+        //  return choice in lower case
         console.log(choicePlayer);
-        return choicePlayer;
+        return choicePlayer = choicePlayer.toLowerCase();
     }
 
     // Check who wins - takes two values
     function determineWinner (choiceComputer, choicePlayer) {
-        console.log("Here");
+        console.log("determineWinner checkpoint");
+        console.log(choiceComputer);
+        console.log(choicePlayer);
         let roundWinner;
-        // switch cases
-        switch (choiceComputer, choicePlayer) {
 
-            // case one playerChoice === compChoice
-            case choiceComputer === choicePlayer:
-                console.log("It is a tie!");
-                break;
+        // if statements
+        if (choiceComputer == choicePlayer) {
+            console.log('It is a tie!');
 
-            case choiceComputer === "paper" && choicePlayer === "rock":
-                console.log("Computer wins!");
-                break;
-            // cases 2 - 6 each possibility
+        } else if (choiceComputer == "paper" && choicePlayer == "rock") {
+            console.log('Computer wins this round!');
+            roundWinner = 0;
+        } else if (choiceComputer == "paper" && choicePlayer == "scissors") {
+            console.log('You win this round!');
+            roundWinner = 1;
+        } else if (choiceComputer == "rock" && choicePlayer == "scissors") {
+            console.log('Computer wins this round!');
+            roundWinner = 0;
+        } else if (choiceComputer == "rock" && choicePlayer == "paper") {
+            console.log('You win this round!');
+            roundWinner = 1;
+        } else if (choiceComputer == "scissors" && choicePlayer == "paper") {
+            console.log('Computer wins this round!');
+            roundWinner = 0;
+        } else if (choiceComputer == "scissors" && choicePlayer == "rock") {
+            console.log('You win this round!');
+            roundWinner = 1;
+        } else {
+            console.log("Something went horribly wrong!")
         }
     }
     rockPaperScissors();
