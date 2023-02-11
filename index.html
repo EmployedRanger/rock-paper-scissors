@@ -11,16 +11,16 @@
     <script>
     // Rock Paper Scissors
 
-    let choiceComputer;
-    let choicePlayer;
+    let computerChoice;
+    let playerChoice;
     let playerScore = 0;
     let computerScore = 0;
     const MAX_ROUNDS = 5;
 
     function playRound() {
-        choiceComputer = getComputerChoice();
-        choicePlayer = getPlayerChoice();
-        let roundWinner = determineWinner(choiceComputer, choicePlayer);
+        computerChoice = getComputerChoice();
+        playerChoice = getPlayerChoice();
+        let roundWinner = determineWinner(computerChoice, playerChoice);
         round(roundWinner);
         score(roundWinner);
     }
@@ -29,54 +29,73 @@
     function getComputerChoice() {
 
         //  randomly choose value 1, 2, 3
-        choiceComputer = Math.floor(Math.random() * 3) + 1;
+        computerChoice = Math.floor(Math.random() * 3) + 1;
 
         //  converts to 1, 2, 3 
-        if (choiceComputer == 1) {
-            choiceComputer = "rock";
-        } else if (choiceComputer == 2) {
-            choiceComputer = "scissors";
+        if (computerChoice == 1) {
+            computerChoice = "rock";
+        } else if (computerChoice == 2) {
+            computerChoice = "scissors";
         } else {
-            choiceComputer = "paper";
+            computerChoice = "paper";
         }
     
         //  returns choice
-        return choiceComputer;
+        return computerChoice;
     }
     
     // Get Player choice
     function getPlayerChoice() {
 
         //  prompt to get choice
-        let choicePlayer = prompt("Rock, Paper, or Scissors?");
+        let playerChoice = prompt("Rock, Paper, or Scissors?");
     
         // Change to lower case
-        // choicePlayer = choicePlayer.toLowerCase();
+        // playerChoice = playerChoice.toLowerCase();
         //  return choice
-        return choicePlayer.toLowerCase();
+        return playerChoice.toLowerCase();
     }
 
     // Check who wins - takes two values
-    function determineWinner (choiceComputer, choicePlayer) {
+    function determineWinner (computerChoice, playerChoice) {
         let roundWinner;
 
-        // if statements
-        if (choiceComputer == choicePlayer) {
-            roundWinner = 2;
-        } else if (choiceComputer == "paper" && choicePlayer == "rock") {
-            roundWinner = 0;
-        } else if (choiceComputer == "paper" && choicePlayer == "scissors") {
-            roundWinner = 1;
-        } else if (choiceComputer == "rock" && choicePlayer == "scissors") {
-            roundWinner = 0;
-        } else if (choiceComputer == "rock" && choicePlayer == "paper") {
-            roundWinner = 1;
-        } else if (choiceComputer == "scissors" && choicePlayer == "paper") {
-            roundWinner = 0;
-        } else if (choiceComputer == "scissors" && choicePlayer == "rock") {
-            roundWinner = 1;
-        } else {}
+        // Switch statement
 
+        switch (computerChoice + playerChoice) {
+            case "rockrock":
+            case "paperpaper":
+            case "scissorsscissors":
+                roundWinner = 2;
+                break;
+            
+            case "paperrock":
+                roundWinner = 0;
+                break;
+            
+            case "paperscissors":
+                roundWinner = 1;
+                break;
+
+            case "rockscissors":
+                roundWinner = 0;
+                break;
+
+            case "rockpaper":
+                roundWinner = 1;
+                break;
+
+            case "scissorspaper":
+                roundWinner = 0;
+                break;
+
+            case "scissorsrock":
+                roundWinner = 1;
+                break;
+
+            default: 
+                roundWinner = 10;
+        }
         return roundWinner;
     }
 
