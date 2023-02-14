@@ -5,152 +5,52 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="#">
 </head>
-<body>
-    
-    <script>
-    // Rock Paper Scissors
+<body class="page">
+    <div class="main-container">
 
-    let computerChoice;
-    let playerChoice;
-    let playerScore = 0;
-    let computerScore = 0;
-    const MAX_ROUNDS = 5;
+        <h1>Rock Paper Scissors</h1>
+        <p class="instructions">First to 5 wins!</p>
+        <div class="object-container">
+            <button id="rock"><img src="./images/rock.png" 
+                alt="rock image"></button>
+            <button id="paper"><img src="./images/paper.png" 
+                alt="paper image"></button>
+            <button id="scissors"><img src="./images/scissors.png" 
+                alt="scissors image"></button>
+        </div>
 
-    function playRound() {
-        computerChoice = getComputerChoice();
-        playerChoice = getPlayerChoice();
-        let roundWinner = determineWinner(computerChoice, playerChoice);
-        round(roundWinner);
-        score(roundWinner);
-    }
+        <div class="scores">
+            <div class="player-box">
+                <div class="small-box">
+                    <p class="player">Player Score: </p>
+                    <p class="player-counter">0</p>
+                </div>
+                <div class="small-box">
+                    <p class="choice">Player Choice: </p>
+                    <p class="player-choice"> nothing</p>
+                </div>
+            </div>
+            <div class="computer-box">
+                <div class="small-box">
+                    <p class="computer">Computer Score: </p>
+                    <p class="computer-counter">0</p>
+                </div>
+                <div class="small-box">
+                    <p class="choice">Computer Choice: </p>
+                    <p class="computer-choice"> nothing</p>
+                </div>
+            </div>
+        </div>
 
-        // Get computer choice function
-    function getComputerChoice() {
+        <div class="announcement">Good luck!</div>
 
-        //  randomly choose value 1, 2, 3
-        computerChoice = Math.floor(Math.random() * 3) + 1;
+        <div class="footer">Made by: Employed Ranger</div>
 
-        //  converts to 1, 2, 3 
-        if (computerChoice == 1) {
-            computerChoice = "rock";
-        } else if (computerChoice == 2) {
-            computerChoice = "scissors";
-        } else {
-            computerChoice = "paper";
-        }
-    
-        //  returns choice
-        return computerChoice;
-    }
-    
-    // Get Player choice
-    function getPlayerChoice() {
+    </div>
 
-        //  prompt to get choice
-        let playerChoice = prompt("Rock, Paper, or Scissors?");
-    
-        // Change to lower case
-        // playerChoice = playerChoice.toLowerCase();
-        //  return choice
-        return playerChoice.toLowerCase();
-    }
-
-    // Check who wins - takes two values
-    function determineWinner (computerChoice, playerChoice) {
-        let roundWinner;
-
-        // Switch statement
-
-        switch (computerChoice + playerChoice) {
-            case "rockrock":
-            case "paperpaper":
-            case "scissorsscissors":
-                roundWinner = 2;
-                break;
-            
-            case "paperrock":
-                roundWinner = 0;
-                break;
-            
-            case "paperscissors":
-                roundWinner = 1;
-                break;
-
-            case "rockscissors":
-                roundWinner = 0;
-                break;
-
-            case "rockpaper":
-                roundWinner = 1;
-                break;
-
-            case "scissorspaper":
-                roundWinner = 0;
-                break;
-
-            case "scissorsrock":
-                roundWinner = 1;
-                break;
-
-            default: 
-                roundWinner = 10;
-        }
-        return roundWinner;
-    }
-
-    function round(roundWinner) {
-        if (roundWinner == 0) {
-            console.log('Computer wins this round!');
-        } else if (roundWinner == 1){
-            console.log('You win this round!');
-        } else if (roundWinner == 2) {
-            console.log('It is a tie! Try again!')
-        } else {
-            console.log('Something went horribly wrong!');
-        }
-    }
-
-    function score(roundWinner) {
-        if (roundWinner == 0) {
-            ++computerScore;
-            console.log("Player score is: " + playerScore);
-            console.log("Computer score is: " + computerScore);
-        } else if (roundWinner == 1) {
-            ++playerScore;
-            console.log("Player score is: " + playerScore);
-            console.log("Computer score is: " + computerScore);
-        } else {
-
-        }
-
-        game(computerScore, playerScore);
-    }
-
-    function game (computerScore, playerScore) {
-        while (playerScore < MAX_ROUNDS && computerScore < MAX_ROUNDS) {
-            let roundWinner;
-
-            // Plays round and records score
-            playRound();
-            if (roundWinner == 0) {
-                ++computerScore;
-            } else if (roundWinner == 1) {
-                ++playerScore;
-            } else {
-            }
-        }
-        if (playerScore >= MAX_ROUNDS) {
-            console.log("Congrats! You win the game!");
-            return;
-        } else if (computerScore >= MAX_ROUNDS) {
-            console.log("Computer won this game!");
-            return;
-            }
-    }
-
-    game(computerScore, playerScore);
-
-    </script>
+    <script src="javascript.js"></script>
 </body>
 </html>
